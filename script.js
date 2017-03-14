@@ -1,4 +1,4 @@
-var startButton = document.getElementById('trial-begin')
+var startButton = document.getElementById('story-begin')
 
 startButton.addEventListener('click', function () {
   // Initial prompt
@@ -12,12 +12,12 @@ startButton.addEventListener('click', function () {
 
 // If the potion chosen is red
   if (potion === 'red') {
-    window.confirm(`Everything goes black. When you open your eyes, you are staring down
+    window.alert(`Everything goes black. When you open your eyes, you are staring down
       a fearsome dragon! You remember, you are Grognara the Fierce and this black dragon is terrorizing
       the nearby village and you must slay it.`)
 
     // Dragon fight beginning prompt
-    var dragonFight = window.prompt(`As an overly agressive hyper masculine barbarian you carry far
+    var dragonFight = window.prompt(`As an overly agressive hyper masculine barbarian, you carry far
         too many weapons: You have a spear, a sword, a shield, and an axe.
         Which will you use to slay the dragon?`)
 
@@ -25,8 +25,8 @@ startButton.addEventListener('click', function () {
     dragonFight = dragonFight.toLowerCase().trim()
 
     // If the weapon chosen is a spear, sword, or axe
-    if (dragonFight === 'spear' || 'sword' || 'axe') {
-      window.confirm('Ugh, of course you chose that. You kill the dragon with the ' + dragonFight + '.')
+    if (dragonFight === ('spear' || 'sword' || 'axe')) {
+      window.alert('Ugh, of course you chose that. You kill the dragon with the ' + dragonFight + '.')
       var dragonIsDead = true
     // If the weapon chosen is a shield
     } else if (dragonFight === 'shield') {
@@ -53,11 +53,14 @@ startButton.addEventListener('click', function () {
       // If the player tries to carry 50 or more pounds
       if (isNaN(dragonLoot)) {
         window.confirm('That is not a number, you carry no loot back to town.')
+      // If dragonLoot is greater than or equal to 50
       } else if (dragonLoot >= 50) {
         window.confirm('That is just too much dragon for one person to carry, you die of exhaustion.')
-      } else {
+      // If dragonLoot is less than 50
+      } else if (dragonLoot > 0 && dragonLoot < 50) {
         window.confirm('Hurray! You\'re the talk of the town and have some sick dragon armor!')
-        potion = ''
+      } else {
+        window.alert('Or you could just return to the town empty handed because that\'s not a number')
       }
     }
     // If potion chosen is blue
