@@ -53,7 +53,7 @@ startButton.addEventListener('click', function () {
         var takeLoot = window.confirm('Are you sure you want to take ' + dragonLoot + ' pounds back?')
       }
       if (takeLoot) {
-        parseInt(dragonLoot)
+        dragonLoot = parseInt(dragonLoot)
         // If the player tries to carry 50 or more pounds
         if (isNaN(dragonLoot)) {
           window.alert('That is not a number, you carry no loot back to town.')
