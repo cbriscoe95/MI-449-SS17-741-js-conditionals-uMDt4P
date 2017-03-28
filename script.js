@@ -25,7 +25,7 @@ startButton.addEventListener('click', function () {
     dragonFight = dragonFight.toLowerCase().trim()
 
     // If the weapon chosen is a spear, sword, or axe
-    if (dragonFight === ('spear' || 'sword' || 'axe')) {
+    if (dragonFight === 'spear' || dragonFight === 'sword' || dragonFight === 'axe') {
       window.alert('Ugh, of course you chose that. You kill the dragon with the ' + dragonFight + '.')
       var dragonIsDead = true
     // If the weapon chosen is a shield
@@ -49,18 +49,25 @@ startButton.addEventListener('click', function () {
     // If the player has killed the dragon
     if (dragonIsDead) {
       var dragonLoot = window.prompt('You carry the dragon carcus back to town but how many pounds will you carry?')
-      parseInt(dragonLoot)
-      // If the player tries to carry 50 or more pounds
-      if (isNaN(dragonLoot)) {
-        window.confirm('That is not a number, you carry no loot back to town.')
-      // If dragonLoot is greater than or equal to 50
-      } else if (dragonLoot >= 50) {
-        window.confirm('That is just too much dragon for one person to carry, you die of exhaustion.')
-      // If dragonLoot is less than 50
-      } else if (dragonLoot > 0 && dragonLoot < 50) {
-        window.confirm('Hurray! You\'re the talk of the town and have some sick dragon armor!')
+      if (dragonLoot !== null) {
+        var takeLoot = window.confirm('Are you sure you want to take ' + dragonLoot + ' pounds back?')
+      }
+      if (takeLoot) {
+        parseInt(dragonLoot)
+        // If the player tries to carry 50 or more pounds
+        if (isNaN(dragonLoot)) {
+          window.alert('That is not a number, you carry no loot back to town.')
+        // If dragonLoot is greater than or equal to 50
+        } else if (dragonLoot >= 50) {
+          window.confirm('That is just too much dragon for one person to carry, you die of exhaustion.')
+        // If dragonLoot is less than 50
+        } else if (dragonLoot > 0 && dragonLoot < 50) {
+          window.confirm('Hurray! You\'re the talk of the town and have some sick dragon armor!')
+        } else {
+          window.alert('Or you could just return to the town empty handed because that\'s not a number')
+        }
       } else {
-        window.alert('Or you could just return to the town empty handed because that\'s not a number')
+        window.alert('Very minimalist of you. You return to the town empty handed')
       }
     }
     // If potion chosen is blue
